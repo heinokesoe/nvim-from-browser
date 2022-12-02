@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nvim:
+    image: docker.io/heinokesoe/nvim:latest
+    container_name: nvim
+    ports:
+      - 3000:3000
+    volumes:
+      # if you want to use with your own config or without configuring neovim, uncomment this
+      # - ./config:/root/.config
+      - ./local:/root/.local
+      - ./workspace:/root/workspace
+    # if you want to use with reverse proxy, uncomment this but you will have to use with ssl to work trz and tsz for transferring files
+    # environment:
+    #   - REVERSE_PROXY=true
+    hostname: nvim
+    restart: unless-stopped
